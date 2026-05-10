@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── MOBILE-PAY Design System ──────────────────────────────────────────────── */
+:root {
+  --primary: #10B981;
+  --primary-dark: #059669;
+  --accent: #FF6B35;
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+  --muted: #F0F6FF;
+  --muted-fg: #6B7280;
+  --border: #E5E7EB;
+  --card: #FFFFFF;
+  --secondary: #F5F7FA;
+  --radius: 0.65rem;
+}
+
+@layer base {
+  * {
+    @apply box-border;
+    border-color: #E5E7EB;
+  }
+  body {
+    @apply bg-white antialiased;
+    color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+  h1 { @apply text-4xl leading-tight; }
+  h2 { @apply text-3xl leading-snug; }
+  h3 { @apply text-2xl leading-snug; }
+}
+
+@layer components {
+  .container {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1280px;
+  }
+  .aio-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300;
+  }
+  .aio-card-elevated {
+    @apply bg-white rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300;
+  }
+  .aio-button-primary {
+    @apply bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition-colors duration-200 active:scale-95 inline-flex items-center gap-2;
+  }
+  .aio-button-secondary {
+    @apply bg-gray-100 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-200;
+  }
+  .aio-button-outline {
+    @apply border-2 border-emerald-500 text-emerald-600 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-50 transition-colors duration-200 inline-flex items-center gap-2;
+  }
+  .aio-icon-circle {
+    @apply w-16 h-16 rounded-full flex items-center justify-center shadow-sm transition-transform duration-300 hover:scale-110;
+  }
+  .aio-fade-in { animation: fadeIn 0.6s ease-out; }
+  .aio-slide-up { animation: slideUp 0.6s ease-out; }
+  .section-py { @apply py-16 lg:py-24; }
+  .gradient-emerald {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%);
+  }
+}
+
+@layer utilities {
+  .show-mobile { @apply block sm:hidden; }
+  .hide-mobile { @apply hidden sm:block; }
+  .text-balance { text-wrap: balance; }
+  .text-foreground { color: #1A1A1A; }
+  .text-muted-foreground { color: #6B7280; }
+  .bg-muted { background-color: #F0F6FF; }
+  .bg-secondary { background-color: #F5F7FA; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #10B981; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #059669; }
+
+*:focus-visible {
+  outline: 2px solid #10B981;
+  outline-offset: 2px;
+}
