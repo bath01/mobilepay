@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3001
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: process.env.CLIENT_URL || '*',
   credentials: true,
 }))
 
@@ -36,7 +36,7 @@ app.use(session({
   cookie: {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    maxAge: 7 * 24 * 60 * 60 * 1000,
   },
 }))
 
@@ -48,14 +48,13 @@ app.use('/api/merchants', merchantRoutes)
 app.use('/api/admin', adminRoutes)
 app.use('/api/contact', contactRoutes)
 
-// Health check
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'MOBILE-PAY API', timestamp: new Date().toISOString() })
 })
 
 // ─── Serve static files in production ─────────────────────────────────────────
 if (process.env.NODE_ENV === 'production') {
-  const clientDist = path.join(__dirname, '../../client')
+  const clientDist = path.join(__dirname, '../client/dist')
   app.use(express.static(clientDist))
   app.get('*', (_req, res) => {
     res.sendFile(path.join(clientDist, 'index.html'))
@@ -73,9 +72,12 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
   res.status(500).json({ error: 'Erreur interne du serveur' })
 })
 
-app.listen(PORT, () => {
-  console.log(`\n🟢 MOBILE-PAY API démarré sur http://localhost:${PORT}`)
-  console.log(`📋 Health check: http://localhost:${PORT}/api/health\n`)
-})
+// Démarrage local uniquement (pas sur Vercel)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`\n🟢 MOBILE-PAY API démarré sur http://localhost:${PORT}`)
+    console.log(`📋 Health check: http://localhost:${PORT}/api/health\n`)
+  })
+}
 
 export default app
