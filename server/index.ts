@@ -73,12 +73,10 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
 })
 
 // Démarrage local uniquement (pas sur Vercel)
-// Always listen
-  app.listen(PORT, () => {
-    console.log(`\n🟢 MOBILE-PAY API démarré sur http://localhost:${PORT}`)
-    console.log(`📋 Health check: http://localhost:${PORT}/api/health\n`)
-  })
-}
+app.listen(PORT, () => {
+  console.log('MOBILE-PAY API started on port ' + PORT)
+})
 
 export default app
+
 
