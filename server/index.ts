@@ -73,7 +73,7 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
 })
 
 // Démarrage local uniquement (pas sur Vercel)
-if (process.env.NODE_ENV !== 'production') {
+// Always listen
   app.listen(PORT, () => {
     console.log(`\n🟢 MOBILE-PAY API démarré sur http://localhost:${PORT}`)
     console.log(`📋 Health check: http://localhost:${PORT}/api/health\n`)
@@ -81,3 +81,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default app
+
