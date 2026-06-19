@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Wallet, LogOut, LayoutDashboard, Shield } from 'lucide-react'
+import { Menu, X, LogOut, LayoutDashboard, Shield } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import AuthModal from './AuthModal'
 
@@ -24,12 +24,13 @@ export default function Navigation() {
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
         <div className="container">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 font-heading font-bold text-xl text-foreground">
-              <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-                <Wallet size={18} className="text-white" />
-              </div>
-              <span>MOBILE-<span className="text-primary-500">PAY</span></span>
+            {/* Logo : marque MobilePay (logo horizontal de l'app mobile) */}
+            <Link to="/" className="flex items-center">
+              <img
+                src="/logo-horizontal.png"
+                alt="MobilePay"
+                className="h-11 w-auto"
+              />
             </Link>
 
             {/* Desktop nav */}

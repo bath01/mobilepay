@@ -10,10 +10,12 @@ import AdminDashboard from './pages/AdminDashboard'
 import AdminFAQ from './pages/AdminFAQ'
 import AdminMerchants from './pages/AdminMerchants'
 import ProtectedRoute from './components/ProtectedRoute'
+import Loader from './components/Loader'
 
 export default function App() {
   return (
     <AuthProvider>
+      <Loader />
       <Toaster
         position="top-right"
         toastOptions={{
@@ -24,7 +26,7 @@ export default function App() {
             borderRadius: '8px',
           },
           success: {
-            iconTheme: { primary: '#10B981', secondary: '#fff' },
+            iconTheme: { primary: '#00D27A', secondary: '#fff' },
           },
           error: {
             iconTheme: { primary: '#EF4444', secondary: '#fff' },

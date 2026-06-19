@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { Wallet } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -8,10 +7,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-5 gap-8 mb-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 font-heading font-bold text-xl mb-4">
-              <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-                <Wallet size={18} className="text-white" />
-              </div>
+            {/* Marque : pastille (logo-mark) + nom en blanc (fond sombre) */}
+            <div className="flex items-center gap-2.5 font-heading font-bold text-xl mb-4">
+              <img src="/logo-mark.png" alt="MobilePay" className="w-9 h-9" />
               <span>MOBILE-<span className="text-primary-400">PAY</span></span>
             </div>
             <p className="text-gray-400 text-sm mb-4 leading-relaxed max-w-xs">
